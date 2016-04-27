@@ -1,0 +1,37 @@
+# Ignore list for Eagle, a PCB layout tool
+
+# Backup files
+*.s#?
+*.b#?
+*.l#?
+
+# Eagle project file
+# It contains a serial number and references to the file structure
+# on your computer.
+# comment the following line if you want to have your project file included.
+eagle.epf
+
+*.dri
+*.drl
+*.gpi
+*.pls
+
+*.drd
+*.drd.*
+
+*.info
+
+*.eps
+
+# file locks introduced since 7.x
+*.lck
+
+# Ignore list for C
+
+# Object files
+*.o
+*.obj
+*.elf
+
+# Executables
+*.hex
