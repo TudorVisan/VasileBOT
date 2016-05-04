@@ -1,0 +1,2 @@
+- Make global and volatile variables
+- Make interrupts ISR(PCINT1_vect) using datasheet
