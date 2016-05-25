@@ -79,9 +79,33 @@
 #define S7_PIN 		PINC
 #define S7_PORT 		PORTC
  
+/* Motor 1 output A conectat la PB1 */
+#define M1A		PB1
+#define M1A_PIN	PINB
+#define M1A_DDR	DDRB
+#define M1A_PORT	PORTB
+
+/* Motor 2 output A conectat la PB2 */
+#define M2A		PB2
+#define M2A_PIN	PINB
+#define M2A_DDR	DDRB
+#define M2A_PORT	PORTB
+
+/* Motor 1 output B conectat la PD5 */
+#define M1B		PD5
+#define M1B_PIN	PIND
+#define M1B_DDR	DDRD
+#define M1B_PORT	PORTD
+
+/* Motor 2 output B conectat la PD6 */
+#define M2B		PD6
+#define M2B_PIN	PIND
+#define M2B_DDR	DDRD
+#define M2B_PORT	PORTD
+ 
 void IO_init(void)
 {
-	/* se setează pinul de ieșire al DEBUG_LED */
+	/* se setează pinul de iesire al DEBUG_LED */
 	DEBUG_LED_DDR |= (1 << DEBUG_LED);
 	
 	/* se seteaza porturile de intrare de pe BTN1,2,3 */
@@ -133,7 +157,27 @@ void sensors_read(void)
 
 void motor_init(void)
 {
-	// TODO
+	/* setarea porturilor de iesire */
+	M1A_DDR |= (1 << M1A);
+	M2A_DDR |= (1 << M2A);
+	M1B_DDR |= (1 << M1B);
+	M2B_DDR |= (1 << M2B);
+	
+	/* initializare timer 0 */
+	TCCR0A = (1 << COM0A1) | (1 << COM0B1) | (1 << WGM00) | (1 << WGM01);
+	TCCR0B = (1 << CS02);
+	
+	/* setarea registrilor pentru 0 de compare cu 0 */
+	OCR0A = 0;
+	OCR0B = 0;
+	
+	/* initializare timer 1 */
+	TCCR1A = (1 << COM1A1) | (1 << COM1B1) | (1 << WGM10);
+	TCCR1B = (1 << CS12) | (1 << WGM12);
+	
+	/* setarea registrilor pentru 1 de compare cu 0 */
+	OCR1A = 0;
+	OCR1B = 0;
 }
 
 int freq = 1000, freq_max = 4999, freq_min = 9;
