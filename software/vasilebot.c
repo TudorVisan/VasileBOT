@@ -1,6 +1,7 @@
 #define F_CPU 16000000
  
 #include <avr/io.h>
+#include <avr/interrupt.h>
 #include <util/delay.h>
  
 /* Debug LED conectat pe portul PB0 */
@@ -121,13 +122,13 @@ int sens[7] = {0};
 
 void sensors_read(void)
 {
-	sens[0] = S1_PIN & (1 << S1) != 0;
-	sens[1] = S2_PIN & (1 << S2) != 0;
-	sens[2] = S3_PIN & (1 << S3) != 0;
-	sens[3] = S4_PIN & (1 << S4) != 0; 
-	sens[4] = S5_PIN & (1 << S5) != 0;
-	sens[5] = S6_PIN & (1 << S6) != 0;
-	sens[6] = S7_PIN & (1 << S7) != 0;
+	sens[0] = (S1_PIN & (1 << S1)) != 0;
+	sens[1] = (S2_PIN & (1 << S2)) != 0;
+	sens[2] = (S3_PIN & (1 << S3)) != 0;
+	sens[3] = (S4_PIN & (1 << S4)) != 0; 
+	sens[4] = (S5_PIN & (1 << S5)) != 0;
+	sens[5] = (S6_PIN & (1 << S6)) != 0;
+	sens[6] = (S7_PIN & (1 << S7)) != 0;
 }
 
 void motor_init(void)
@@ -135,37 +136,41 @@ void motor_init(void)
 	// TODO
 }
 
+int freq = 1000, freq_max = 4999, freq_min = 9;
+
 ISR(PCINT1_vect)
 {
-	if( ( BTN3_PIN & ( 1 << BTN3) == 0 )
-		if( freq < fmax )
+	if( ( BTN3_PIN & ( 1 << BTN3)) == 0 )
+		if( freq < freq_max )
 			freq++;
 	
-	if( ( BTN2_PIN & ( 1 << BTN2) == 0 )
-		if( freq > fmin )
+	if( ( BTN2_PIN & ( 1 << BTN2)) == 0 )
+		if( freq > freq_min )
 			freq--;
 }
+
+int dbg_led_go = 0;
 
 ISR(PCINT2_vect)
 {
 	if( ( BTN1_PIN & ( 1 << BTN1 ) ) == 0 )
-		DBG_LED_GO ^= 1;
+		dbg_led_go^= 1;
 }
 
 
 int main() 
 {
+	int i = 0;
 	IO_init();
 	sensors_init();
 	
 	sei();
 	
-	int freq = 1000, fmax = 4999, fmin = 9;
-	
 	while(1) 
 	{
 		DEBUG_LED_PORT ^= (1 << DEBUG_LED);
-		_delay_ms(freq);
+		for( i =0; i < freq ; i++)
+			_delay_ms(1);
 	}
  
 	return 0;
