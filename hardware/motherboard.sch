@@ -17604,9 +17604,9 @@ For boards designed to be plugged directly into a USB slot. If possible, ensure 
 <label x="332.74" y="86.36" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="U1" gate="A" pin="PD6"/>
-<wire x1="241.3" y1="142.24" x2="251.46" y2="142.24" width="0.1524" layer="91"/>
-<label x="246.38" y="142.24" size="1.778" layer="95"/>
+<pinref part="U1" gate="A" pin="PD5"/>
+<wire x1="241.3" y1="144.78" x2="251.46" y2="144.78" width="0.1524" layer="91"/>
+<label x="246.38" y="144.78" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="M2B" class="0">
@@ -17616,9 +17616,9 @@ For boards designed to be plugged directly into a USB slot. If possible, ensure 
 <label x="332.74" y="83.82" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="U1" gate="A" pin="PD7"/>
-<wire x1="241.3" y1="139.7" x2="251.46" y2="139.7" width="0.1524" layer="91"/>
-<label x="246.38" y="139.7" size="1.778" layer="95"/>
+<pinref part="U1" gate="A" pin="PD6"/>
+<wire x1="241.3" y1="142.24" x2="251.46" y2="142.24" width="0.1524" layer="91"/>
+<label x="246.38" y="142.24" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="S1" class="0">
@@ -17671,14 +17671,14 @@ For boards designed to be plugged directly into a USB slot. If possible, ensure 
 </net>
 <net name="S5" class="0">
 <segment>
-<pinref part="U1" gate="A" pin="PD5"/>
-<wire x1="241.3" y1="144.78" x2="251.46" y2="144.78" width="0.1524" layer="91"/>
-<label x="246.38" y="144.78" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="JP7" gate="A" pin="4"/>
 <wire x1="281.94" y1="144.78" x2="297.18" y2="144.78" width="0.1524" layer="91"/>
 <label x="294.64" y="144.78" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U1" gate="A" pin="PD7"/>
+<wire x1="241.3" y1="139.7" x2="251.46" y2="139.7" width="0.1524" layer="91"/>
+<label x="246.38" y="139.7" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="S6" class="0">
