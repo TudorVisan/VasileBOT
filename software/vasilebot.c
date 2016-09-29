@@ -9,7 +9,7 @@
 #elif defined BOARD_ARDUINO_UNO
 #include "arduino.h"
 #else
-#error "Board not defined!"
+#error Board not defined!
 #endif
 
 /* Debug LED conectat pe portul PB0 */
