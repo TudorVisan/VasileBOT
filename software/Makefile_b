@@ -2,7 +2,7 @@ SHELL := bash
 PRINT := echo -e
 RM := rm -rf
 
-MCU := atmega32u4
+MCU := atmega328p
 
 CC := avr-gcc
 CFLAGS := -mmcu=$(MCU) -Os -Wall
