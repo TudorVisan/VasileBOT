@@ -171,6 +171,7 @@
 <dimension x1="0" y1="85" x2="0" y2="0" x3="-4" y3="42.5" textsize="1.778" textratio="20" layer="20"/>
 <hole x="17.5" y="81" drill="3.2"/>
 <hole x="17.5" y="4" drill="3.2"/>
+<dimension x1="0" y1="85" x2="21.5" y2="85" x3="10.75" y3="89.5" textsize="1.778" textratio="20" layer="20"/>
 </plain>
 <libraries>
 <library name="pinhead">
