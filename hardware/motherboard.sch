@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.5.0">
+<eagle version="7.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.05" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -17125,11 +17125,29 @@ For boards designed to be plugged directly into a USB slot. If possible, ensure 
 <segment>
 <pinref part="U2" gate="A" pin="VCC2"/>
 <pinref part="P+7" gate="G$1" pin="VCC/2"/>
-<wire x1="373.38" y1="104.14" x2="355.6" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="373.38" y1="104.14" x2="365.76" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="365.76" y1="104.14" x2="355.6" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="355.6" y1="104.14" x2="355.6" y2="114.3" width="0.1524" layer="91"/>
 <pinref part="C8" gate="G$1" pin="2"/>
 <wire x1="350.52" y1="104.14" x2="355.6" y2="104.14" width="0.1524" layer="91"/>
 <junction x="355.6" y="104.14"/>
+<wire x1="414.02" y1="124.46" x2="414.02" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="414.02" y1="139.7" x2="365.76" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="421.64" y1="124.46" x2="421.64" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="421.64" y1="139.7" x2="414.02" y2="139.7" width="0.1524" layer="91"/>
+<junction x="414.02" y="139.7"/>
+<pinref part="D3" gate="1" pin="C"/>
+<wire x1="429.26" y1="124.46" x2="429.26" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="429.26" y1="139.7" x2="421.64" y2="139.7" width="0.1524" layer="91"/>
+<junction x="421.64" y="139.7"/>
+<pinref part="D4" gate="1" pin="C"/>
+<wire x1="436.88" y1="124.46" x2="436.88" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="436.88" y1="139.7" x2="429.26" y2="139.7" width="0.1524" layer="91"/>
+<junction x="429.26" y="139.7"/>
+<pinref part="D1" gate="1" pin="C"/>
+<pinref part="D2" gate="1" pin="C"/>
+<wire x1="365.76" y1="139.7" x2="365.76" y2="104.14" width="0.1524" layer="91"/>
+<junction x="365.76" y="104.14"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -17331,39 +17349,21 @@ For boards designed to be plugged directly into a USB slot. If possible, ensure 
 <pinref part="P+5" gate="VCC" pin="VCC"/>
 </segment>
 <segment>
-<pinref part="U2" gate="A" pin="VCC1"/>
-<wire x1="373.38" y1="106.68" x2="365.76" y2="106.68" width="0.1524" layer="91"/>
 <pinref part="P+6" gate="VCC" pin="VCC"/>
-<wire x1="365.76" y1="106.68" x2="360.68" y2="106.68" width="0.1524" layer="91"/>
+<pinref part="U2" gate="A" pin="VCC1"/>
+<wire x1="373.38" y1="106.68" x2="360.68" y2="106.68" width="0.1524" layer="91"/>
 <wire x1="360.68" y1="106.68" x2="360.68" y2="116.84" width="0.1524" layer="91"/>
-<pinref part="C9" gate="G$1" pin="2"/>
-<wire x1="342.9" y1="104.14" x2="342.9" y2="106.68" width="0.1524" layer="91"/>
-<wire x1="342.9" y1="106.68" x2="360.68" y2="106.68" width="0.1524" layer="91"/>
 <junction x="360.68" y="106.68"/>
 <pinref part="U2" gate="A" pin="1,2EN"/>
 <wire x1="373.38" y1="99.06" x2="360.68" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="360.68" y1="99.06" x2="360.68" y2="106.68" width="0.1524" layer="91"/>
 <pinref part="U2" gate="A" pin="3,4EN"/>
 <wire x1="373.38" y1="96.52" x2="360.68" y2="96.52" width="0.1524" layer="91"/>
 <wire x1="360.68" y1="96.52" x2="360.68" y2="99.06" width="0.1524" layer="91"/>
 <junction x="360.68" y="99.06"/>
-<wire x1="414.02" y1="124.46" x2="414.02" y2="139.7" width="0.1524" layer="91"/>
-<wire x1="414.02" y1="139.7" x2="365.76" y2="139.7" width="0.1524" layer="91"/>
-<wire x1="365.76" y1="139.7" x2="365.76" y2="106.68" width="0.1524" layer="91"/>
-<junction x="365.76" y="106.68"/>
-<wire x1="421.64" y1="124.46" x2="421.64" y2="139.7" width="0.1524" layer="91"/>
-<wire x1="421.64" y1="139.7" x2="414.02" y2="139.7" width="0.1524" layer="91"/>
-<junction x="414.02" y="139.7"/>
-<pinref part="D3" gate="1" pin="C"/>
-<wire x1="429.26" y1="124.46" x2="429.26" y2="139.7" width="0.1524" layer="91"/>
-<wire x1="429.26" y1="139.7" x2="421.64" y2="139.7" width="0.1524" layer="91"/>
-<junction x="421.64" y="139.7"/>
-<pinref part="D4" gate="1" pin="C"/>
-<wire x1="436.88" y1="124.46" x2="436.88" y2="139.7" width="0.1524" layer="91"/>
-<wire x1="436.88" y1="139.7" x2="429.26" y2="139.7" width="0.1524" layer="91"/>
-<junction x="429.26" y="139.7"/>
-<pinref part="D1" gate="1" pin="C"/>
-<pinref part="D2" gate="1" pin="C"/>
+<wire x1="360.68" y1="99.06" x2="360.68" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="342.9" y1="106.68" x2="360.68" y2="106.68" width="0.1524" layer="91"/>
+<pinref part="C9" gate="G$1" pin="2"/>
+<wire x1="342.9" y1="104.14" x2="342.9" y2="106.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+22" gate="VCC" pin="VCC"/>
@@ -17812,8 +17812,8 @@ For boards designed to be plugged directly into a USB slot. If possible, ensure 
 <approved hash="104,1,373.38,104.14,U2,VCC2,VCC/2,,,"/>
 <approved hash="113,1,130.071,89.431,FRAME1,,,,,"/>
 <approved hash="113,1,35.3229,152.269,JP1,,,,,"/>
-<approved hash="113,1,212.09,58.7417,DBG_LED,,,,,"/>
-<approved hash="113,1,211.966,84.1417,PWR_LED,,,,,"/>
+<approved hash="113,1,211.779,58.7417,DBG_LED,,,,,"/>
+<approved hash="113,1,211.779,84.1417,PWR_LED,,,,,"/>
 <approved hash="113,1,226.06,70.7305,S1,,,,,"/>
 <approved hash="113,1,472.677,113.161,JP3,,,,,"/>
 <approved hash="113,1,472.677,105.541,JP4,,,,,"/>
