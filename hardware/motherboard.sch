@@ -17812,8 +17812,8 @@ For boards designed to be plugged directly into a USB slot. If possible, ensure 
 <approved hash="104,1,373.38,104.14,U2,VCC2,VCC/2,,,"/>
 <approved hash="113,1,130.071,89.431,FRAME1,,,,,"/>
 <approved hash="113,1,35.3229,152.269,JP1,,,,,"/>
-<approved hash="113,1,211.779,58.7417,DBG_LED,,,,,"/>
-<approved hash="113,1,211.779,84.1417,PWR_LED,,,,,"/>
+<approved hash="113,1,212.09,58.7417,DBG_LED,,,,,"/>
+<approved hash="113,1,211.966,84.1417,PWR_LED,,,,,"/>
 <approved hash="113,1,226.06,70.7305,S1,,,,,"/>
 <approved hash="113,1,472.677,113.161,JP3,,,,,"/>
 <approved hash="113,1,472.677,105.541,JP4,,,,,"/>
