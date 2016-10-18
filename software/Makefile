@@ -53,6 +53,14 @@ endif
 
 	$(CC) -o $@ $(CFLAGS) $^
 
+print_upload_warning:
+	@$(PRINT) "Press reset button and wait for the LED to start blinking in a weird way, then you may proceed."
+
+upload: print_upload_warning vasilebot.hex
+	$(eval CHOICE := $(shell read choice rest))
+ifeq ($(BOARD),1)
+	@(avrdude -p atmega32u4 -P /dev/ttyACM0 -c avr109 -U flash:w:vasilebot.hex)
+endif
 
 clean_config: clean
 	@$(RM) $(CONFIG_FILE)
