@@ -9,6 +9,8 @@ SIZE := avr-size
 CFLAGS = -mmcu=$(MCU) -Os -Wall
 LDFLAGS =
 
+SRCS = vasilebot.c
+
 
 CONFIG_FILE := config.mk
 
@@ -24,9 +26,6 @@ ifneq ($(MAKECMDGOALS),config)
 endif
 
 
-SRCS = vasilebot.c
-
-
 default: build
 
 
@@ -36,28 +35,26 @@ print_config_banner:
 	@$(PRINT) "\t[1] Arduino Uno"
 	@$(PRINT) -n "Your choice: "
 
-config: print_config_banner clean
+read_config: print_config_banner
 	$(eval CHOICE := $(shell read choice rest && echo $$choice))
-ifeq ($(CHOICE),0)
-	echo da
-	@$(PRINT) "BOARD := VASILEBOT_V1"				> $(CONFIG_FILE)
-	@$(PRINT) "MCU := atmega328p"					>> $(CONFIG_FILE)
-	@$(PRINT) "UPLOAD := ./bootloadHID -r vasilebot.hex"	>> $(CONFIG_FILE)
-	@$(PRINT) "SRCS += board_vasilebot_v1.c"			>> $(CONFIG_FILE)
-	@$(PRINT) "CFLAGS += -DBOARD_VASILEBOT_V1"		>> $(CONFIG_FILE)
-else
-    ifeq ($(CHOICE),1)
-    	echo nu
-	@$(PRINT) "BOARD := ARDUINO_LEONARDO"			> $(CONFIG_FILE)
-	@$(PRINT) "MCU := atmega32u4"					>> $(CONFIG_FILE)
-	@$(PRINT) "UPLOAD := avrdude -p $$(MCU) -P /dev/ttyACM0 -c avr109"\
-	    "-U flash:w:vasilebot.hex"						>> $(CONFIG_FILE)
-	@$(PRINT) "SRCS += board_arduino_leonardo.c"		>> $(CONFIG_FILE)
-	@$(PRINT) "CFLAGS += -DBOARD_ARDUINO_LEONARDO"	>> $(CONFIG_FILE)
-    else
-	echo bine
-    endif
-endif
+
+config: read_config clean
+	@if [ $(CHOICE) -eq 0 ];\
+	then\
+		$(PRINT) "BOARD := VASILEBOT_V1"				> $(CONFIG_FILE);\
+		$(PRINT) "MCU := atmega328p"					>> $(CONFIG_FILE);\
+		$(PRINT) "UPLOAD := ./bootloadHID -r vasilebot.hex"	>> $(CONFIG_FILE);\
+		$(PRINT) "SRCS += board_vasilebot_v1.c"			>> $(CONFIG_FILE);\
+		$(PRINT) "CFLAGS += -DBOARD_VASILEBOT_V1"		>> $(CONFIG_FILE);\
+	elif [ $(CHOICE) -eq 1 ];\
+	then\
+		$(PRINT) "BOARD := ARDUINO_LEONARDO"			> $(CONFIG_FILE);\
+		$(PRINT) "MCU := atmega32u4"					>> $(CONFIG_FILE);\
+		$(PRINT) "UPLOAD := avrdude -p \$$(MCU) -P /dev/ttyACM0 -c avr109"\
+		    "-U flash:w:vasilebot.hex"						>> $(CONFIG_FILE);\
+		$(PRINT) "SRCS += board_arduino_leonardo.c"		>> $(CONFIG_FILE);\
+		$(PRINT) "CFLAGS += -DBOARD_ARDUINO_LEONARDO"	>> $(CONFIG_FILE);\
+	fi
 
 clean_config: clean
 	@$(RM) $(CONFIG_FILE)
@@ -70,6 +67,7 @@ vasilebot.hex: vasilebot.elf
 	$(SIZE) $@
 
 vasilebot.elf: $(SRCS)
+	echo $(SRCS)
 	$(CC) -o $@ $(CFLAGS) $^
 
 clean:

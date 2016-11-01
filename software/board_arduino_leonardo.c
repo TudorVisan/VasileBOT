@@ -1,4 +1,10 @@
-#include"board.h"
+#define F_CPU 16000000
+
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <util/delay.h>
+
+#include "board.h"
 
 /* Debug LED conectat pe portul PB0 */
 #define DEBUG_LED_DDR	DDRB
@@ -188,8 +194,15 @@ void debug_led_set_state(int state)
 {
 	if (state == 0)
 		DEBUG_LED_PORT &= ~(1 << DEBUG_LED);
-	else 
+	else
 		DEBUG_LED_PORT |= (1 << DEBUG_LED);
+}
+
+void delay(int ms)
+{
+	int i;
+	for (i = 0; i < ms; ++i)
+		_delay_ms(1);
 }
 
 void init_board(void (*button1)(void), void (*button2)(void), void (*button3)(void))

@@ -20,7 +20,7 @@
 #define BTN1			PD4
 #define BTN1_PCINT		PCINT20
 #define BTN1_PCINT_IE	PCIE2
-#define BTN1_PCMSK 		PCMSK2
+#define BTN1_PCMSK		PCMSK2
 
 /* Buton 2 conectat pe portul PC5 */
 #define BTN2_DDR		DDRC
@@ -29,7 +29,7 @@
 #define BTN2			PC5
 #define BTN2_PCINT		PCINT13
 #define BTN2_PCINT_IE	PCIE1
-#define BTN2_PCMSK 		PCMSK1
+#define BTN2_PCMSK		PCMSK1
 
 /* Buton 3 conectat pe portul PC4 */
 #define BTN3_DDR		DDRC
@@ -38,49 +38,49 @@
 #define BTN3			PC4
 #define BTN3_PCINT		PCINT12
 #define BTN3_PCINT_IE	PCIE1
-#define BTN3_PCMSK 		PCMSK1
+#define BTN3_PCMSK		PCMSK1
 
 /* Senzorul S1 conectat pe pinul PD0 */
-#define S1 				PD0
-#define S1_DDR 			DDRD
-#define S1_PIN 			PIND
-#define S1_PORT 		PORTD
+#define S1				PD0
+#define S1_DDR			DDRD
+#define S1_PIN			PIND
+#define S1_PORT			PORTD
 
 /* Senzorul S2 conectat pe pinul PD1 */
-#define S2 				PD1
-#define S2_DDR 			DDRD
-#define S2_PIN 			PIND
-#define S2_PORT 		PORTD
+#define S2				PD1
+#define S2_DDR			DDRD
+#define S2_PIN			PIND
+#define S2_PORT			PORTD
 
 /* Senzorul S3 conectat pe pinul PD2 */
-#define S3 				PD2
-#define S3_DDR 			DDRD
-#define S3_PIN 			PIND
-#define S3_PORT 		PORTD
+#define S3				PD2
+#define S3_DDR			DDRD
+#define S3_PIN			PIND
+#define S3_PORT			PORTD
 
 /* Senzorul S4 conectat pe pinul PD3 */
-#define S4 				PD3
-#define S4_DDR 			DDRD
-#define S4_PIN 			PIND
-#define S4_PORT 		PORTD
+#define S4				PD3
+#define S4_DDR			DDRD
+#define S4_PIN			PIND
+#define S4_PORT			PORTD
 
 /* Senzorul S5 conectat pe pinul PD5 */
-#define S5 				PD5
-#define S5_DDR 			DDRD
-#define S5_PIN 			PIND
-#define S5_PORT 		PORTD
+#define S5				PD5
+#define S5_DDR			DDRD
+#define S5_PIN			PIND
+#define S5_PORT			PORTD
 
 /* Senzorul S6 conectat pe pinul PC0 */
-#define S6 				PC0
-#define S6_DDR 			DDRC
-#define S6_PIN 			PINC
-#define S6_PORT 		PORTC
+#define S6				PC0
+#define S6_DDR			DDRC
+#define S6_PIN			PINC
+#define S6_PORT			PORTC
 
 /* Senzorul S7 conectat pe pinul PC1 */
-#define S7 				PC1
-#define S7_DDR 			DDRC
-#define S7_PIN 			PINC
-#define S7_PORT 		PORTC
+#define S7				PC1
+#define S7_DDR			DDRC
+#define S7_PIN			PINC
+#define S7_PORT			PORTC
 
 /* Motor 1 output A conectat la PB1 */
 #define M1A			PB1
@@ -194,8 +194,15 @@ void debug_led_set_state(int state)
 {
 	if (state == 0)
 		DEBUG_LED_PORT &= ~(1 << DEBUG_LED);
-	else 
+	else
 		DEBUG_LED_PORT |= (1 << DEBUG_LED);
+}
+
+void delay(int ms)
+{
+	int i;
+	for (i = 0; i < ms; ++i)
+		_delay_ms(1);
 }
 
 void init_board(void (*button1)(void), void (*button2)(void), void (*button3)(void))
