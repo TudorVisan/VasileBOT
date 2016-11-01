@@ -6,13 +6,13 @@ int sens[7] = {0};
 
 void button1_callback(void)
 {
-	if( freq < freq_max )
+	if (freq < freq_max)
 		freq++;
 }
 
 void button2_callback(void)
 {
-	if( freq > freq_min )
+	if (freq > freq_min)
 		freq--;
 }
 
