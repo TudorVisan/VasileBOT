@@ -14,12 +14,17 @@ CONFIG_FILE := config.mk
 
 
 ifneq ($(MAKECMDGOALS),config)
-    ifneq ($(wildcard $(CONFIG_FILE)),)
-        include $(CONFIG_FILE)
-    else
-        $(error No config file. Please run 'make config')
+    ifneq ($(MAKECMDGOALS),clean_config)
+        ifneq ($(wildcard $(CONFIG_FILE)),)
+            include $(CONFIG_FILE)
+        else
+            $(error No config file. Please run 'make config')
+        endif
     endif
 endif
+
+
+SRCS = vasilebot.c
 
 
 default: build
@@ -34,15 +39,23 @@ print_config_banner:
 config: print_config_banner clean
 	$(eval CHOICE := $(shell read choice rest && echo $$choice))
 ifeq ($(CHOICE),0)
-	@$(PRINT) "BOARD := VASILEBOT_V1" > $(CONFIG_FILE)
-	@$(PRINT) "MCU := atmega328p" > $(CONFIG_FILE)
-	@$(PRINT) "UPLOAD := ./bootloadHID -r vasilebot.hex" > $(CONFIG_FILE)
+	echo da
+	@$(PRINT) "BOARD := VASILEBOT_V1"				> $(CONFIG_FILE)
+	@$(PRINT) "MCU := atmega328p"					>> $(CONFIG_FILE)
+	@$(PRINT) "UPLOAD := ./bootloadHID -r vasilebot.hex"	>> $(CONFIG_FILE)
+	@$(PRINT) "SRCS += board_vasilebot_v1.c"			>> $(CONFIG_FILE)
+	@$(PRINT) "CFLAGS += -DBOARD_VASILEBOT_V1"		>> $(CONFIG_FILE)
 else
     ifeq ($(CHOICE),1)
-	@$(PRINT) "BOARD := ARDUINO_LEONARDO" > $(CONFIG_FILE)
-	@$(PRINT) "MCU := atmega32u4" > $(CONFIG_FILE)
+    	echo nu
+	@$(PRINT) "BOARD := ARDUINO_LEONARDO"			> $(CONFIG_FILE)
+	@$(PRINT) "MCU := atmega32u4"					>> $(CONFIG_FILE)
 	@$(PRINT) "UPLOAD := avrdude -p $$(MCU) -P /dev/ttyACM0 -c avr109"\
-	    "-U flash:w:vasilebot.hex" > $(CONFIG_FILE)
+	    "-U flash:w:vasilebot.hex"						>> $(CONFIG_FILE)
+	@$(PRINT) "SRCS += board_arduino_leonardo.c"		>> $(CONFIG_FILE)
+	@$(PRINT) "CFLAGS += -DBOARD_ARDUINO_LEONARDO"	>> $(CONFIG_FILE)
+    else
+	echo bine
     endif
 endif
 
@@ -56,14 +69,7 @@ vasilebot.hex: vasilebot.elf
 	$(OBJCOPY)  -j .text -j .data -O ihex $^ $@
 	$(SIZE) $@
 
-vasilebot.elf: vasilebot.c
-ifeq ($(BOARD),VASILEBOT_V1)
-	$(eval CFLAGS += -DBOARD_VASILEBOT_V1)
-else
-    ifeq ($(BOARD),ARDUINO_LEONARDO)
-	$(eval CFLAGS += -DBOARD_ARDUINO_LEONARDO)
-    endif
-endif
+vasilebot.elf: $(SRCS)
 	$(CC) -o $@ $(CFLAGS) $^
 
 clean:
