@@ -35,3 +35,7 @@ eagle.epf
 
 # Executables
 *.hex
+
+# Vim backup files.
+*.swp
+*.swo
