@@ -1,0 +1,56 @@
+Partlist
+
+Exported from motherboard.brd at 08/11/2016 20:19
+
+EAGLE Version 7.6.0 Copyright (c) 1988-2016 CadSoft
+
+Assembly variant:
+
+Part     Value          Package           Library             Position (mm)         Orientation
+
+C1       330n           C0805K            resistor            (71.5 15.5)           MR90
+C2       100u           E2,5-5            resistor            (66.5 18)             R270
+C3       22p            C0805K            resistor            (18.5 42)             MR180
+C4       22p            C0805K            resistor            (18.5 37)             MR180
+C5       100n           C0805K            resistor            (34 46)               MR0
+C6       100n           C0805K            resistor            (34 41)               MR180
+C7       100n           C0805K            resistor            (41.5 44.5)           MR270
+C8       100n           C0805K            resistor            (79 35)               MR180
+C9       100n           C0805K            resistor            (69.5 41.5)           MR0
+D1       1N4004         DO41-10           diode               (66 31.5)             R180
+D2       1N4004         DO41-10           diode               (80.5 31.5)           R0
+D3       1N4004         DO41-10           diode               (82.5 52)             R180
+D4       1N4004         DO41-10           diode               (64.5 50)             R180
+D5       1N4004         DO41-10           diode               (68.5 27)             R0
+D6       1N4004         DO41-10           diode               (84 27)               R0
+D7       1N4004         DO41-10           diode               (78.5 57)             R180
+D8       1N4004         DO41-10           diode               (62 55)               R0
+D9       3V3            DO41Z10           diode               (95 40)               R270
+D10      3V3            DO41Z10           diode               (99.5 38)             R270
+DBG_LED                 LED5MM            led                 (30 23)               R270
+IC1      7805T          TO220H            linear              (48.5 16.5)           R90
+JP1                     1X02              pinhead             (45 24)               R180
+JP2      AVR-ISP-6VERT  AVR-ISP-6         avr-7               (46.5 38)             R90
+JP3                     1X01              pinhead             (99.25 26)            R90
+JP4                     1X01              pinhead             (92.25 26)            R90
+JP5                     1X01              pinhead             (92.25 58)            R90
+JP6                     1X01              pinhead             (99.25 58)            R90
+JP7                     1X09              pinhead             (8 51)                R90
+PWR_LED                 LED5MM            led                 (54 27)               R180
+Q1       16MHz          HC49/S            crystal             (24 39.5)             R90
+R1       10K            M0805             resistor            (46 64.5)             MR180
+R2       470R           M0805             resistor            (37.5 25)             MR180
+R3       470R           M0805             resistor            (54 22)               MR0
+R18      2k2            M0805             resistor            (95 49)               MR90
+R19      100            M0805             resistor            (98.5 49)             MR90
+R20      100            M0805             resistor            (91.5 49)             MR90
+R21      10K            M0805             resistor            (28.5 72.5)           MR180
+R22      10K            M0805             resistor            (41 72.5)             MR180
+R23      10K            M0805             resistor            (52.5 72.5)           MR180
+S1                      B3F-10XX          switch-omron        (46 59)               R180
+S2                      B3F-10XX          switch-omron        (48 78)               R0
+S3                      B3F-10XX          switch-omron        (36.5 78)             R0
+S4                      B3F-10XX          switch-omron        (24 78)               R0
+U$1      USB-MICROB     USB-MICROB        SparkFun-Connectors (106 44.5)            MR270
+U1       ATMEGA328P-PU  DIP254P762X457-28 untitled            (37.5 28)             R0
+U2       L293NE         DIP254P762X508-16 untitled            (83.5 45.5)           R90
