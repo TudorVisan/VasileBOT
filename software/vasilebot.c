@@ -27,11 +27,11 @@ int main()
 
 	while(1)
 	{
-		debug_led_set_state(1);
-		delay(freq);
+                debug_led_set_state(1);
+                delay(freq);
 
-		debug_led_set_state(0);
-		delay(freq);
+                debug_led_set_state(0);
+                delay(freq);
 	}
 
 	return 0;

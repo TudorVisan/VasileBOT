@@ -214,6 +214,10 @@ void init_board(void (*button1)(void), void (*button2)(void), void (*button3)(vo
 	button2_callback = button2;
 	button3_callback = button3;
 
+	// Dezactiveaza controller-ul USB astfel incat sa nu genereze
+        // intreruperi atunci cand este legat la un host USB.
+	USBCON &= ~(1 << USBE);
+
 	sei();
 }
 
