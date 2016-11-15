@@ -12,12 +12,17 @@
 #define DEBUG_LED_PORT	PORTC
 #define DEBUG_LED		PC7
 
-/* Buton 1 conectat pe portul PB4 - pin 8 */
+#define PWR_LED_DDR		DDRB
+#define PWR_LED_PIN		PINB
+#define PWR_LED_PORT	PORTB
+#define PWR_LED		PB0
+
+/* Buton 1 conectat pe portul PB4 - pin 11 */
 #define BTN1_DDR		DDRB
 #define BTN1_PIN		PINB
 #define BTN1_PORT		PORTB
-#define BTN1			PB4
-#define BTN1_PCINT		PCINT4
+#define BTN1			PB7
+#define BTN1_PCINT		PCINT7
 #define BTN1_PCINT_IE	PCIE0
 #define BTN1_PCMSK 		PCMSK0
 
@@ -113,10 +118,11 @@ void IO_init(void)
 {
 	/* Se setează pinul de iesire al DEBUG_LED */
 	DEBUG_LED_DDR |= (1 << DEBUG_LED);
+	PWR_LED_DDR |= (1 << PWR_LED);
 
 	/* Stingerea DEBUG_LED */
 	DEBUG_LED_PORT &= ~(1 << DEBUG_LED);
-
+	PWR_LED_PORT &= ~(1 << PWR_LED);
 	/* Se seteaza porturile de intrare de pe BTN1, 2, 3 */
 	BTN1_DDR &= ~(1 << BTN1);
 	BTN2_DDR &= ~(1 << BTN2);
@@ -148,7 +154,7 @@ void sensors_init(void)
 	S7_DDR &= ~(1 << S7);
 }
 
-void sensors_read(int *sens)
+void sensors_read(volatile int *sens)
 {
 	sens[0] = (S1_PIN & (1 << S1)) != 0;
 	sens[1] = (S2_PIN & (1 << S2)) != 0;
@@ -197,6 +203,15 @@ void debug_led_set_state(int state)
 		DEBUG_LED_PORT |= (1 << DEBUG_LED);
 }
 
+void power_led_change_state(volatile int state)
+{
+	//PWR_LED_PORT ^= (1 << PWR_LED);
+	if (state == 0)
+		PWR_LED_PORT &= ~(1 << PWR_LED);
+	else
+		PWR_LED_PORT |= (1 << PWR_LED);
+}
+
 void delay(int ms)
 {
 	int i;
@@ -223,12 +238,20 @@ void init_board(void (*button1)(void), void (*button2)(void), void (*button3)(vo
 
 ISR(PCINT0_vect)
 {
+	delay(20);
+
 	if ((BTN3_PIN & (1 << BTN3)) == 0)
+	{
 		button3_callback();
+	}
 
 	if ((BTN2_PIN & (1 << BTN2)) == 0)
+	{
 		button2_callback();
+	}
 
 	if ((BTN1_PIN & (1 << BTN1)) == 0)
+	{	
 		button1_callback();
+	}
 }
