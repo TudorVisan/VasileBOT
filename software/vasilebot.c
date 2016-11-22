@@ -38,6 +38,7 @@ int main()
 	          delay(250);
 	}
 
+	 
 
 	while(1)
 	{
@@ -47,12 +48,19 @@ int main()
 			debug_led_set_state(1);
 			delay(3000);
 		}
+		
 
                 debug_led_set_state(1);
                 delay(freq);
 
                 debug_led_set_state(0);
                 delay(freq);
+
+                motors_set_speed(130, 0);
+                delay(1000);
+                motors_set_speed(12, 0);
+                delay(1000);
+
 	}
 
 	return 0;

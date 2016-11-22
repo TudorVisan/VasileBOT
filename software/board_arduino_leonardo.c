@@ -174,12 +174,16 @@ void motor_init(void)
 	M2B_DDR |= (1 << M2B);
 
 	/* initializare timer 0 */
-	TCCR0A = (1 << COM0A1) | (1 << COM0B1) | (1 << WGM00) | (1 << WGM01);
-	TCCR0B = (1 << CS02);
+	TCCR3A = (1 << COM3A0) | (1 << COM3B0) | (1 << COM3A1) | (1 << COM3B1) |  (1 << WGM30) ;
+	TCCR3B = (1 << CS32) | (1 << WGM32) ;
+
+	// TCCR4A = (1 << COM4A0) | (1 << COM4B0) | (1 << COM4A1) | (1 << COM4B1) |  (1 << WGM30) ;
+	// TCCR3B = (1 << CS32) | (1 << WGM32) ;
+
 
 	/* setarea registrilor pentru 0 de compare cu 0 */
-	OCR0A = 0;
-	OCR0B = 0;
+	OCR3A = 0;
+	//OCR3B = 0;
 
 	/* initializare timer 1 */
 	TCCR1A = (1 << COM1A1) | (1 << COM1B1) | (1 << WGM10);
@@ -193,6 +197,10 @@ void motor_init(void)
 void motors_set_speed(int motor1_speed, int motor2_speed)
 {
 	//TODO
+	OCR3A = (255 * motor1_speed) / 1000;
+	
+	//OCR3B = 0;
+
 }
 
 void debug_led_set_state(int state)
